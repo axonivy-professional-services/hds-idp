@@ -1,0 +1,30 @@
+{
+  "$schema" : "https://json-schema.axonivy.com/process/11.3.0/process.json",
+  "id" : "1912BD8AA358F4A8",
+  "kind" : "WEB_SERVICE",
+  "config" : {
+    "data" : "at.hds.idp.code.Data",
+    "wsTypeName" : "at.hds.idp.code.InvoiceExtraction"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "WebserviceStart",
+      "name" : "call()",
+      "config" : {
+        "signature" : "call"
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : [
+        { "id" : "f2", "to" : "f1" }
+      ]
+    }, {
+      "id" : "f1",
+      "type" : "WebserviceEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 },
+        "labelOffset" : { "x" : 13, "y" : 33 }
+      }
+    } ]
+}
