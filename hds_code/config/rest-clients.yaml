@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://json-schema.axonivy.com/app/11.3.1/rest-clients.json
 RestClients:
-  NatifAI (Natif Document Capturing API):
+  NatifAI (Invoice Extraction):
     UUID: 6ac8b7fd-3bfa-4d47-b5d2-870c862f316c
     Url: https://api.natif.ai
     Features:
@@ -8,3 +8,13 @@ RestClients:
     OpenAPI:
       SpecUrl: file:///C:/Users/hdvu/Downloads/Invoice%20Extraction-openapi.json
       Namespace: ai.natif.api.client
+      ResolveFully: true
+  NatifAI (Generic Document Splitting):
+    UUID: 5e0b87b5-a75c-4ac9-8da6-1b036f3549c2
+    Url: https://api.natif.ai
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    OpenAPI:
+      SpecUrl: file:///C:/Users/hdvu/Downloads/Generic%20Document%20Splitting-openapi.json
+      Namespace: ai.natif.api.client
+      ResolveFully: true

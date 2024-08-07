@@ -25,5 +25,6 @@
 	<classpathentry kind="con" path="WEBAPP_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="lib" path="lib/generated/rest/jaxRsClient_6ac8b7fd-3bfa-4d47-b5d2-870c862f316c.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/generated/rest/jaxRsClient_5e0b87b5-a75c-4ac9-8da6-1b036f3549c2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

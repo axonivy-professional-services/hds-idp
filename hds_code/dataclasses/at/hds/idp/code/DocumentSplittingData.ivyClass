@@ -1,0 +1,6 @@
+DocumentSplittingData #class
+at.hds.idp.code #namespace
+file java.io.File #field
+file PERSISTENT #fieldModifier
+result ai.natif.api.client.GenericSplittingProcessingCompleted #field
+result PERSISTENT #fieldModifier

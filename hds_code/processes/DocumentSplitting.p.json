@@ -1,9 +1,9 @@
 {
   "$schema" : "https://json-schema.axonivy.com/process/11.3.0/process.json",
-  "id" : "1912BDDAE075FD4C",
+  "id" : "1912C4E944060802",
   "kind" : "CALLABLE_SUB",
   "config" : {
-    "data" : "at.hds.idp.code.InvoiceExtractionData"
+    "data" : "at.hds.idp.code.DocumentSplittingData"
   },
   "elements" : [ {
       "id" : "f0",
@@ -22,7 +22,7 @@
       "id" : "f1",
       "type" : "CallSubEnd",
       "visual" : {
-        "at" : { "x" : 672, "y" : 64 },
+        "at" : { "x" : 608, "y" : 64 },
         "labelOffset" : { "x" : 13, "y" : 33 }
       }
     }, {
@@ -38,12 +38,12 @@
     }, {
       "id" : "f5",
       "type" : "RestClientCall",
-      "name" : "invoice_extraction",
+      "name" : "Document Splitting",
       "config" : {
         "method" : "POST",
         "target" : {
-          "clientId" : "6ac8b7fd-3bfa-4d47-b5d2-870c862f316c",
-          "path" : "/processing/invoice_extraction",
+          "clientId" : "5e0b87b5-a75c-4ac9-8da6-1b036f3549c2",
+          "path" : "/processing/generic_splitting",
           "headers" : {
             "Authorization" : ""
           }
@@ -52,16 +52,15 @@
           "type" : "FORM",
           "mediaType" : "multipart/form-data",
           "form" : {
-            "file" : [ "in.file" ],
-            "" : [ "" ]
+            "file" : [ "in.file" ]
           },
           "entity" : {
-            "type" : "ai.natif.api.client.BodyTProcessingInvoiceExtractionPost"
+            "type" : "ai.natif.api.client.BodyTProcessingGenericSplittingPost"
           }
         },
         "response" : {
           "entity" : {
-            "type" : "ai.natif.api.client.InvoiceExtractionProcessingCompleted",
+            "type" : "ai.natif.api.client.GenericSplittingProcessingCompleted",
             "map" : {
               "out.result" : "result"
             }
@@ -69,13 +68,13 @@
         }
       },
       "visual" : {
-        "at" : { "x" : 472, "y" : 64 }
+        "at" : { "x" : 448, "y" : 64 }
       },
       "boundaries" : [ {
           "id" : "f7",
           "type" : "ErrorBoundaryEvent",
           "visual" : {
-            "at" : { "x" : 504, "y" : 104 },
+            "at" : { "x" : 480, "y" : 104 },
             "labelOffset" : { "x" : 13, "y" : 33 }
           },
           "connect" : [
