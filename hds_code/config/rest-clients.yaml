@@ -5,6 +5,9 @@ RestClients:
     Url: https://api.natif.ai
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    Properties:
+      JSON.Deserialization.FAIL_ON_INVALID_SUBTYPE: 'false'
     OpenAPI:
       SpecUrl: file:///C:/Users/hdvu/Downloads/Invoice%20Extraction-openapi.json
       Namespace: ai.natif.api.client
@@ -14,6 +17,9 @@ RestClients:
     Url: https://api.natif.ai
     Features:
     - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    Properties:
+      JSON.Deserialization.FAIL_ON_INVALID_SUBTYPE: 'false'
     OpenAPI:
       SpecUrl: file:///C:/Users/hdvu/Downloads/Generic%20Document%20Splitting-openapi.json
       Namespace: ai.natif.api.client

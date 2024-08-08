@@ -1,0 +1,6 @@
+NatifAIDemoData #class
+at.hds.idp.code.NatifAIDemo #namespace
+file File #field
+file PERSISTENT #fieldModifier
+file1 File #field
+file1 PERSISTENT #fieldModifier

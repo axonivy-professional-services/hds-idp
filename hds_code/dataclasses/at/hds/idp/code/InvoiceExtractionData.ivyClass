@@ -1,6 +1,6 @@
 InvoiceExtractionData #class
 at.hds.idp.code #namespace
 file java.io.File #field
-file PERSISTENT #fieldModifier
 result ai.natif.api.client.InvoiceExtractionProcessingCompleted #field
-result PERSISTENT #fieldModifier
+include java.util.List<String> #field
+wait_for Integer #field

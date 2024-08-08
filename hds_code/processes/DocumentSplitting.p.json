@@ -8,9 +8,25 @@
   "elements" : [ {
       "id" : "f0",
       "type" : "CallSubStart",
-      "name" : "call()",
+      "name" : "call(File)",
       "config" : {
-        "signature" : "call"
+        "signature" : "call",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File", "desc" : "" }
+          ],
+          "map" : {
+            "out.file" : "param.file"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "result", "type" : "ai.natif.api.client.GenericSplittingProcessingCompleted", "desc" : "" }
+          ],
+          "map" : {
+            "result.result" : "in.result"
+          }
+        }
       },
       "visual" : {
         "at" : { "x" : 96, "y" : 64 }
@@ -29,6 +45,16 @@
       "id" : "f3",
       "type" : "Script",
       "name" : "inital",
+      "config" : {
+        "output" : {
+          "code" : [
+            "import at.hds.idp.core.service.NatifAIService;",
+            "",
+            "in.include = NatifAIService.getIncludes();",
+            "in.wait_for = NatifAIService.getWaitFor();"
+          ]
+        }
+      },
       "visual" : {
         "at" : { "x" : 224, "y" : 64 }
       },
@@ -44,8 +70,12 @@
         "target" : {
           "clientId" : "5e0b87b5-a75c-4ac9-8da6-1b036f3549c2",
           "path" : "/processing/generic_splitting",
+          "queryParams" : {
+            "include" : "",
+            "wait_for" : "in.wait_for"
+          },
           "headers" : {
-            "Authorization" : ""
+            "Authorization" : "\"ApiKey \" + ivy.var.get(\"hds.natif_ai.apiKey\")"
           }
         },
         "body" : {
