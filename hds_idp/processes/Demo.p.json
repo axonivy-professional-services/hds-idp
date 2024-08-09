@@ -1,0 +1,76 @@
+{
+  "format" : "10.0.0",
+  "id" : "1913539744C5718B",
+  "config" : {
+    "data" : "com.axonivy.hds.idp.Data"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "RequestStart",
+      "name" : "start.ivp",
+      "config" : {
+        "callSignature" : "start",
+        "outLink" : "start.ivp",
+        "case" : { }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : { "id" : "f4", "to" : "f3" }
+    }, {
+      "id" : "f1",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 352, "y" : 64 }
+      }
+    }, {
+      "id" : "f3",
+      "type" : "DialogCall",
+      "config" : {
+        "dialogId" : "com.axonivy.hds.idp.Demo",
+        "startMethod" : "start()"
+      },
+      "visual" : {
+        "at" : { "x" : 224, "y" : 64 }
+      },
+      "connect" : { "id" : "f2", "to" : "f1" }
+    }, {
+      "id" : "f5",
+      "type" : "RequestStart",
+      "name" : "start2.ivp",
+      "config" : {
+        "callSignature" : "start2",
+        "outLink" : "start2.ivp",
+        "case" : { }
+      },
+      "visual" : {
+        "at" : { "x" : 88, "y" : 240 }
+      },
+      "connect" : { "id" : "f7", "to" : "f6" }
+    }, {
+      "id" : "f6",
+      "type" : "SubProcessCall",
+      "name" : "DocumentSplitting",
+      "config" : {
+        "processCall" : "DocumentSplitting:getSubPdf(java.util.UUID)",
+        "call" : {
+          "params" : [
+            { "name" : "processing_Id", "type" : "java.util.UUID" }
+          ],
+          "map" : {
+            "param.processing_Id" : "java.util.UUID.fromString(\"0c62f9f2-56d1-4dbd-9526-4af24c7b9622\")"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 280, "y" : 240 }
+      },
+      "connect" : { "id" : "f9", "to" : "f8" }
+    }, {
+      "id" : "f8",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 472, "y" : 240 }
+      }
+    } ]
+}

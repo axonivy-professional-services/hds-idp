@@ -1,0 +1,25 @@
+RestClients:
+  IDP (Invoice Extraction):
+    UUID: 2d9937ad-dbc9-4c54-b334-dbc8eb7d7c63
+    Url: https://api.natif.ai
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    Properties:
+      JSON.Deserialization.FAIL_ON_INVALID_SUBTYPE: 'false'
+    OpenAPI:
+      SpecUrl: file:///C:/Users/hdvu/Downloads/Invoice%20Extraction-openapi.json
+      Namespace: ai.natif.api.client
+      ResolveFully: true
+  IDP (Generic Document Splitting):
+    UUID: 78c818c2-3410-4b4d-ada6-4b158bf69ad9
+    Url: https://api.natif.ai
+    Features:
+    - ch.ivyteam.ivy.rest.client.mapper.JsonFeature
+    - org.glassfish.jersey.media.multipart.MultiPartFeature
+    Properties:
+      JSON.Deserialization.FAIL_ON_INVALID_SUBTYPE: 'false'
+    OpenAPI:
+      SpecUrl: file:///C:/Users/hdvu/Downloads/Generic%20Document%20Splitting-openapi.json
+      Namespace: ai.natif.api.client
+      ResolveFully: true

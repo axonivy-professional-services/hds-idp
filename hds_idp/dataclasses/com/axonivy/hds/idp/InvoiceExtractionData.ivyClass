@@ -1,0 +1,7 @@
+InvoiceExtractionData #class
+com.axonivy.hds.idp #namespace
+file java.io.File #field
+invoiceExtractionResult ai.natif.api.client.InvoiceExtractionProcessingCompleted #field
+include java.util.List<String> #field
+processing_id java.util.UUID #field
+invoice ai.natif.api.client.Invoice #field

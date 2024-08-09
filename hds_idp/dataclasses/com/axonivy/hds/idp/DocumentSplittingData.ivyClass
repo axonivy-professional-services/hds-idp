@@ -1,0 +1,7 @@
+DocumentSplittingData #class
+com.axonivy.hds.idp #namespace
+file java.io.File #field
+splittingResult ai.natif.api.client.GenericSplittingProcessingCompleted #field
+include java.util.List<String> #field
+processing_id java.util.UUID #field
+fileDest java.io.File #field

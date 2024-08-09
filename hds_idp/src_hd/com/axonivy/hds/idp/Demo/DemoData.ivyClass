@@ -1,0 +1,6 @@
+DemoData #class
+com.axonivy.hds.idp.Demo #namespace
+file File #field
+file PERSISTENT #fieldModifier
+file1 File #field
+file1 PERSISTENT #fieldModifier

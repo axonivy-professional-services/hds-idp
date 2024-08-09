@@ -1,0 +1,163 @@
+{
+  "format" : "10.0.0",
+  "id" : "191351DC83943D11",
+  "kind" : "CALLABLE_SUB",
+  "config" : {
+    "data" : "com.axonivy.hds.idp.DocumentSplittingData"
+  },
+  "elements" : [ {
+      "id" : "f0",
+      "type" : "CallSubStart",
+      "name" : "splitting(File)",
+      "config" : {
+        "callSignature" : "splitting",
+        "input" : {
+          "params" : [
+            { "name" : "file", "type" : "java.io.File" }
+          ],
+          "map" : {
+            "out.file" : "param.file"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "result", "type" : "ai.natif.api.client.GenericSplittingProcessingCompleted" }
+          ],
+          "map" : {
+            "result.result" : "in.splittingResult"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 64 }
+      },
+      "connect" : { "id" : "f3", "to" : "f2" }
+    }, {
+      "id" : "f1",
+      "type" : "CallSubEnd",
+      "visual" : {
+        "at" : { "x" : 480, "y" : 64 }
+      }
+    }, {
+      "id" : "f2",
+      "type" : "RestClientCall",
+      "name" : "Generic Document Splitting",
+      "config" : {
+        "headers" : {
+          "Accept" : "*/*",
+          "Authorization" : "\"ApiKey \" + ivy.var.get(\"hds.idp.apiKey\")"
+        },
+        "clientId" : "78c818c2-3410-4b4d-ada6-4b158bf69ad9",
+        "method" : "POST",
+        "queryParams" : {
+          "include" : "",
+          "wait_for" : "ivy.var.get(\"hds.idp.wait_for\").toNumber()"
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "bodyObjectType" : "ai.natif.api.client.BodyTProcessingGenericSplittingPost",
+        "bodyInputType" : "FORM",
+        "bodyForm" : {
+          "file" : "in.file"
+        },
+        "path" : "/processing/generic_splitting",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "responseMapping" : {
+          "out.splittingResult" : "result"
+        },
+        "resultType" : "ai.natif.api.client.GenericSplittingProcessingCompleted",
+        "bodyMediaType" : "multipart/form-data"
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 64 }
+      },
+      "boundaries" : [ {
+          "id" : "f5",
+          "type" : "ErrorBoundaryEvent",
+          "visual" : {
+            "at" : { "x" : 320, "y" : 104 }
+          },
+          "connect" : { "id" : "f6", "to" : "f1" }
+        } ],
+      "connect" : { "id" : "f4", "to" : "f1" }
+    }, {
+      "id" : "f7",
+      "type" : "CallSubStart",
+      "name" : "getSubPdf(UUID)",
+      "config" : {
+        "callSignature" : "getSubPdf",
+        "input" : {
+          "params" : [
+            { "name" : "processing_Id", "type" : "java.util.UUID" }
+          ],
+          "map" : {
+            "out.processing_id" : "param.processing_Id"
+          }
+        },
+        "result" : {
+          "params" : [
+            { "name" : "destFile", "type" : "java.io.File" }
+          ],
+          "map" : {
+            "result.destFile" : "in.fileDest"
+          }
+        }
+      },
+      "visual" : {
+        "at" : { "x" : 96, "y" : 224 }
+      },
+      "connect" : { "id" : "f9", "to" : "f8" }
+    }, {
+      "id" : "f8",
+      "type" : "RestClientCall",
+      "name" : "Get sub file",
+      "config" : {
+        "path" : "/processing/results/{processing_id}/sub-pdfs/{index}",
+        "headers" : {
+          "Accept" : "application/pdf",
+          "Authorization" : "\"ApiKey \" + ivy.var.get(\"hds.idp.apiKey\")"
+        },
+        "clientId" : "78c818c2-3410-4b4d-ada6-4b158bf69ad9",
+        "clientErrorCode" : "ivy:error:rest:client",
+        "queryParams" : {
+          "jpeg_quality" : "",
+          "pdfa_compliant" : "",
+          "image_height" : "",
+          "image_width" : "",
+          "page_height" : "",
+          "page_width" : "",
+          "dpi" : ""
+        },
+        "statusErrorCode" : "ivy:error:rest:client",
+        "templateParams" : {
+          "index" : "0",
+          "processing_id" : "in.processing_id"
+        },
+        "responseCode" : [
+          "import com.axonivy.hds.idp.service.IDPService;",
+          "import org.apache.commons.io.FileUtils;",
+          "",
+          "import java.io.InputStream;",
+          "ivy.log.debug(\"response: \" + response.getEntity().toType(InputStream.class));",
+          "String fileName = IDPService.getFileNameFromHeaderResponse(response.getHeaders().get(\"Content-Disposition\").toString());",
+          "ivy.log.debug(\"filename: \" + fileName);",
+          "java.io.File fileDest = new java.io.File(fileName);",
+          "InputStream inputStr = response.getEntity().toType(InputStream.class);",
+          "FileUtils.copyInputStreamToFile(inputStr, fileDest);",
+          "",
+          "ivy.log.debug(\"file ne: \" + fileDest);",
+          "ivy.log.debug(\"file ne: \" + fileDest.getAbsolutePath());",
+          "in.fileDest = fileDest;"
+        ]
+      },
+      "visual" : {
+        "at" : { "x" : 288, "y" : 224 }
+      },
+      "connect" : { "id" : "f11", "to" : "f10" }
+    }, {
+      "id" : "f10",
+      "type" : "TaskEnd",
+      "visual" : {
+        "at" : { "x" : 480, "y" : 224 }
+      }
+    } ]
+}
